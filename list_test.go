@@ -20,7 +20,7 @@ func TestMakeList(t *testing.T) {
 			tipo)
 	}
 
-	fmt.Println("MakeList [OK]")
+	fmt.Println("list.MakeList [OK]")
 }
 
 func TestString(t *testing.T) {
@@ -38,7 +38,7 @@ func TestString(t *testing.T) {
 		t.Errorf("String não está retornando o formato padrão estabelecido quando possui vários elementos.")
 	}
 
-	fmt.Println("String [OK]")
+	fmt.Println("list.String [OK]")
 }
 
 func TestLength(t *testing.T) {
@@ -47,7 +47,7 @@ func TestLength(t *testing.T) {
 		t.Errorf("Length não está retornando o valor correto para a quantidade de elementos. %d != %d", l1.Length(), q)
 	}
 
-	fmt.Println("Length [OK]")
+	fmt.Println("list.Length [OK]")
 }
 
 func TestElements(t *testing.T) {
@@ -63,7 +63,7 @@ func TestElements(t *testing.T) {
 		t.Errorf("Elements[1:2] não está retornando o valor correto, %v[%s] != %v[%s].", es, reflect.TypeOf(es), ns, reflect.TypeOf(ns))
 	}
 
-	fmt.Println("Elements [OK]")
+	fmt.Println("list.Elements [OK]")
 }
 
 func TestGetGets(t *testing.T) {
@@ -105,7 +105,7 @@ func TestGetGets(t *testing.T) {
 		t.Errorf("Em es, oks := Gets(0, 4) a variável ok está retornando verdadeiro[ok=%t] para um índice inválido", ok)
 	}
 
-	fmt.Println("Get/Gets [OK]")
+	fmt.Println("list.Get/Gets [OK]")
 }
 
 func TestSet(t *testing.T) {
@@ -121,7 +121,7 @@ func TestSet(t *testing.T) {
 		t.Errorf("Set(-1, 3) está retornando falso[ok=%t] para um índice válido(inverso)", ok)
 	}
 
-	fmt.Println("Set [OK]")
+	fmt.Println("list.Set [OK]")
 }
 
 func TestAppendAppends(t *testing.T) {
@@ -143,7 +143,7 @@ func TestAppendAppends(t *testing.T) {
 		t.Errorf("l1.Appends(list.SliceElements{7, 8}...) está adicionando elementos errado")
 	}
 
-	fmt.Println("Append/Appends [OK]")
+	fmt.Println("list.Append/Appends [OK]")
 }
 
 func TestGetType(t *testing.T) {
@@ -159,7 +159,7 @@ func TestGetType(t *testing.T) {
 		t.Errorf("GetType(10) está retornando uma string com um tipo para uma posição inválida")
 	}
 
-	fmt.Println("GetType [OK]")
+	fmt.Println("list.GetType [OK]")
 }
 
 func TestExtend(t *testing.T) {
@@ -170,7 +170,7 @@ func TestExtend(t *testing.T) {
 		t.Errorf("Extend(list.SliceElements{9, 10}) está adicionando SliceElements errado")
 	}
 
-	fmt.Println("Extend [OK]")
+	fmt.Println("list.Extend [OK]")
 }
 
 func TestCopy(t *testing.T) {
@@ -180,7 +180,7 @@ func TestCopy(t *testing.T) {
 		t.Errorf("Copy() está retornado uma cópia inválida, %v != %v", l1, l2)
 	}
 
-	fmt.Println("Copy [OK]")
+	fmt.Println("list.Copy [OK]")
 }
 
 func TestClear(t *testing.T) {
@@ -190,7 +190,7 @@ func TestClear(t *testing.T) {
 		t.Errorf("Clear() está limpando a List incorretamente")
 	}
 
-	fmt.Println("Clear [OK]")
+	fmt.Println("list.Clear [OK]")
 }
 
 func TestCount(t *testing.T) {
@@ -203,7 +203,7 @@ func TestCount(t *testing.T) {
 		t.Errorf("Count(10) está retornando quantidade para elemento inexistente em List")
 	}
 
-	fmt.Println("Count [OK]")
+	fmt.Println("list.Count [OK]")
 }
 
 func TestIndex(t *testing.T) {
@@ -216,7 +216,7 @@ func TestIndex(t *testing.T) {
 		t.Errorf("Index(10) está retornando uma posição para um elemento inexistente")
 	}
 
-	fmt.Println("Index [OK]")
+	fmt.Println("list.Index [OK]")
 }
 
 func TestInsert(t *testing.T) {
@@ -230,7 +230,7 @@ func TestInsert(t *testing.T) {
 		t.Errorf("Insert(5, 20) está inserindo o elemento 20 em uma posição inexistente")
 	}
 
-	fmt.Println("Insert [ok]")
+	fmt.Println("list.Insert [ok]")
 }
 
 func TestPop(t *testing.T) {
@@ -253,7 +253,7 @@ func TestPop(t *testing.T) {
 		t.Errorf("Pop() está removendo elementos de List vazia")
 	}
 
-	fmt.Println("Pop [ok]")
+	fmt.Println("list.Pop [ok]")
 }
 
 func TestRemove(t *testing.T) {
@@ -265,7 +265,7 @@ func TestRemove(t *testing.T) {
 		t.Errorf("Remove(10) está removendo elemento inexistente da List")
 	}
 
-	fmt.Println("Remove [ok]")
+	fmt.Println("list.Remove [ok]")
 }
 
 // tipos, struct e métodos para ordenação de Pessoa
@@ -318,5 +318,5 @@ func TestSortReverse(t *testing.T) {
 		t.Errorf("Reverse() não pode ordenar em ordem inversa a List de inteiros")
 	}
 
-	fmt.Println("Sort/Reverse [ok]")
+	fmt.Println("list.Sort/Reverse [ok]")
 }
