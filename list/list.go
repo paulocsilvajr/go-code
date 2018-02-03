@@ -316,8 +316,3 @@ func (list *List) Reverse(sortFunction ...func(*List)) error {
 
 	return er
 }
-
-// Len sobrescreve a interface padrão Len para exibir a quantidade de elements pela função len()
-func (list *List) Len() int {
-	return list.Length()
-}
