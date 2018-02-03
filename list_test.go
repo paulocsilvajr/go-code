@@ -20,7 +20,7 @@ func TestMakeList(t *testing.T) {
 			tipo)
 	}
 
-	fmt.Println("list.MakeList [OK]")
+	fmt.Println("list.MakeList")
 }
 
 func TestString(t *testing.T) {
@@ -38,7 +38,7 @@ func TestString(t *testing.T) {
 		t.Errorf("String não está retornando o formato padrão estabelecido quando possui vários elementos.")
 	}
 
-	fmt.Println("list.String [OK]")
+	fmt.Println("list.String")
 }
 
 func TestLength(t *testing.T) {
@@ -47,7 +47,7 @@ func TestLength(t *testing.T) {
 		t.Errorf("Length não está retornando o valor correto para a quantidade de elementos. %d != %d", l1.Length(), q)
 	}
 
-	fmt.Println("list.Length [OK]")
+	fmt.Println("list.Length")
 }
 
 func TestElements(t *testing.T) {
@@ -63,7 +63,7 @@ func TestElements(t *testing.T) {
 		t.Errorf("Elements[1:2] não está retornando o valor correto, %v[%s] != %v[%s].", es, reflect.TypeOf(es), ns, reflect.TypeOf(ns))
 	}
 
-	fmt.Println("list.Elements [OK]")
+	fmt.Println("list.Elements")
 }
 
 func TestGetGets(t *testing.T) {
@@ -86,6 +86,10 @@ func TestGetGets(t *testing.T) {
 		t.Errorf("Get(-1) não está retornando o valor correto, %d[%t] != %d.", e, ok, n)
 	}
 
+	if e, ok = l1.Get(3); ok {
+		t.Errorf("Em e, ok := Get(3) a variável ok está retornando verdadeiro[ok=%t] para um índice inválido", ok)
+	}
+
 	es, oks = l1.Gets(0, -1)
 	ns = list.SliceElements{1, 2}
 	if !reflect.DeepEqual(es, ns) {
@@ -93,8 +97,9 @@ func TestGetGets(t *testing.T) {
 			es, oks, reflect.TypeOf(es), ns, reflect.TypeOf(ns))
 	}
 
-	if e, ok = l1.Get(3); ok {
-		t.Errorf("Em e, ok := Get(3) a variável ok está retornando verdadeiro[ok=%t] para um índice inválido", ok)
+	var i int
+	if i, ok = l1.GetI(3); fmt.Sprintf("%s", reflect.TypeOf(e)) != "int" {
+		t.Errorf("Em i, ok := GetI(3) a variável i[%d] deve ser do tipo int", i)
 	}
 
 	if es, oks = l1.Gets(-1, 3); ok {
@@ -105,7 +110,7 @@ func TestGetGets(t *testing.T) {
 		t.Errorf("Em es, oks := Gets(0, 4) a variável ok está retornando verdadeiro[ok=%t] para um índice inválido", ok)
 	}
 
-	fmt.Println("list.Get/Gets [OK]")
+	fmt.Println("list.Get/Gets")
 }
 
 func TestSet(t *testing.T) {
@@ -121,7 +126,7 @@ func TestSet(t *testing.T) {
 		t.Errorf("Set(-1, 3) está retornando falso[ok=%t] para um índice válido(inverso)", ok)
 	}
 
-	fmt.Println("list.Set [OK]")
+	fmt.Println("list.Set")
 }
 
 func TestAppendAppends(t *testing.T) {
@@ -143,7 +148,7 @@ func TestAppendAppends(t *testing.T) {
 		t.Errorf("l1.Appends(list.SliceElements{7, 8}...) está adicionando elementos errado")
 	}
 
-	fmt.Println("list.Append/Appends [OK]")
+	fmt.Println("list.Append/Appends")
 }
 
 func TestGetType(t *testing.T) {
@@ -159,7 +164,7 @@ func TestGetType(t *testing.T) {
 		t.Errorf("GetType(10) está retornando uma string com um tipo para uma posição inválida")
 	}
 
-	fmt.Println("list.GetType [OK]")
+	fmt.Println("list.GetType")
 }
 
 func TestExtend(t *testing.T) {
@@ -170,7 +175,7 @@ func TestExtend(t *testing.T) {
 		t.Errorf("Extend(list.SliceElements{9, 10}) está adicionando SliceElements errado")
 	}
 
-	fmt.Println("list.Extend [OK]")
+	fmt.Println("list.Extend")
 }
 
 func TestCopy(t *testing.T) {
@@ -180,7 +185,7 @@ func TestCopy(t *testing.T) {
 		t.Errorf("Copy() está retornado uma cópia inválida, %v != %v", l1, l2)
 	}
 
-	fmt.Println("list.Copy [OK]")
+	fmt.Println("list.Copy")
 }
 
 func TestClear(t *testing.T) {
@@ -190,7 +195,7 @@ func TestClear(t *testing.T) {
 		t.Errorf("Clear() está limpando a List incorretamente")
 	}
 
-	fmt.Println("list.Clear [OK]")
+	fmt.Println("list.Clear")
 }
 
 func TestCount(t *testing.T) {
@@ -203,7 +208,7 @@ func TestCount(t *testing.T) {
 		t.Errorf("Count(10) está retornando quantidade para elemento inexistente em List")
 	}
 
-	fmt.Println("list.Count [OK]")
+	fmt.Println("list.Count")
 }
 
 func TestIndex(t *testing.T) {
@@ -216,7 +221,7 @@ func TestIndex(t *testing.T) {
 		t.Errorf("Index(10) está retornando uma posição para um elemento inexistente")
 	}
 
-	fmt.Println("list.Index [OK]")
+	fmt.Println("list.Index")
 }
 
 func TestInsert(t *testing.T) {
@@ -230,7 +235,7 @@ func TestInsert(t *testing.T) {
 		t.Errorf("Insert(5, 20) está inserindo o elemento 20 em uma posição inexistente")
 	}
 
-	fmt.Println("list.Insert [ok]")
+	fmt.Println("list.Insert")
 }
 
 func TestPop(t *testing.T) {
@@ -253,7 +258,7 @@ func TestPop(t *testing.T) {
 		t.Errorf("Pop() está removendo elementos de List vazia")
 	}
 
-	fmt.Println("list.Pop [ok]")
+	fmt.Println("list.Pop")
 }
 
 func TestRemove(t *testing.T) {
@@ -265,10 +270,10 @@ func TestRemove(t *testing.T) {
 		t.Errorf("Remove(10) está removendo elemento inexistente da List")
 	}
 
-	fmt.Println("list.Remove [ok]")
+	fmt.Println("list.Remove")
 }
 
-// tipos, struct e métodos para ordenação de Pessoa
+// tipo, struct e métodos para ordenação de Pessoa
 type Pessoa struct {
 	nome  string
 	idade int
@@ -318,5 +323,5 @@ func TestSortReverse(t *testing.T) {
 		t.Errorf("Reverse() não pode ordenar em ordem inversa a List de inteiros")
 	}
 
-	fmt.Println("list.Sort/Reverse [ok]")
+	fmt.Println("list.Sort/Reverse")
 }

@@ -66,6 +66,27 @@ func (list *List) Get(index int) (element, bool) {
 	return 0, false
 }
 
+func (list *List) GetI(index int) (int, bool) {
+	if i, ok := list.Get(index); ok {
+		return i.(int), ok
+	}
+	return 0, false
+}
+
+func (list *List) GetF(index int) (float64, bool) {
+	if i, ok := list.Get(index); ok {
+		return i.(float64), ok
+	}
+	return 0.0, false
+}
+
+func (list *List) GetS(index int) (string, bool) {
+	if i, ok := list.Get(index); ok {
+		return i.(string), ok
+	}
+	return "", false
+}
+
 // Gets retorna o intervalo entre index0 e indexN como um slice de elementos e true caso o intervalo exista. Pode-se usar números negativos para indexN.
 func (list *List) Gets(index0, indexN int) (SliceElements, bool) {
 	if indexN < 0 {
