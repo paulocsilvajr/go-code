@@ -10,16 +10,13 @@ func main() {
 
 	l := list.MakeList()
 	l.Extend(list.SliceElements{1, 1, 2, 3, 5, 8, 13})
-	ln, _ := l.Get(-1)
-	ln_1, _ := l.Get(-2)
-	proximo := ln.(int) + ln_1.(int)
+	ln, _ := l.GetI(-1)
+	ln_1, _ := l.GetI(-2)
+	proximo := ln + ln_1
 	l.Append(proximo)
 
-	fmt.Println(proximo)
+	fmt.Println(l)
 
-	n1 := l.Elements[0]
-	n2, _ := l.GetI(-2)
-
-	n1 = n1.(int) + n2
+	fmt.Println(len(l.Elements), cap(l.Elements))
 
 }

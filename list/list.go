@@ -20,6 +20,27 @@ type List struct {
 	Elements SliceElements
 }
 
+// Int converte um element em um int, se possível
+func Int(e element) int {
+	return e.(int)
+}
+
+// String converte um element em um string, se possível
+func String(e element) string {
+	return e.(string)
+}
+
+// Float converte um element em um float64, se possível
+func Float(e element) float64 {
+	return e.(float64)
+}
+
+// MakeList retorna um nova List.
+// l := list.MakeList()
+func MakeList() List {
+	return List{}
+}
+
 // String sobrescreve interface String padrão para formatar impressao de List para:
 // [0, 1, 2, ...]
 func (list List) String() string {
@@ -33,24 +54,27 @@ func (list List) String() string {
 
 // Length retorna o comprimento da List.
 func (list *List) Length() int {
-	return int(len(list.Elements))
+	return len(list.Elements)
 }
 
+func (list *List) Capacity() int {
+	return cap(list.Elements)
+}
+
+// last retorna o índice do último elemento de list
 func (list *List) last() int {
 	return list.Length() - 1
 }
 
+// posicaoIndiceNegativo retorna o índice referente ao indice negativo informado
 func (list *List) posicaoIndiceNegativo(index int) int {
-	return list.Length() + index
+	if index < 0 {
+		return list.Length() + index
+	}
+	return 0
 }
 
-// MakeList retorna um nova List.
-// l := list.MakeList()
-func MakeList() List {
-	return List{}
-}
-
-// Get retorna o elemento referente ao [indice informado e true caso exista elemento no índice.
+// Get retorna o elemento referente ao indice informado e true caso exista elemento no índice.
 // Pode-se informar números negativos para elementos em ordem inversa.
 // Ex: -1 == último.
 func (list *List) Get(index int) (element, bool) {
@@ -66,23 +90,26 @@ func (list *List) Get(index int) (element, bool) {
 	return 0, false
 }
 
+// GetI retorna o elemento referente ao indice informado convertido em int e true caso exista elemento no índice.
 func (list *List) GetI(index int) (int, bool) {
-	if i, ok := list.Get(index); ok {
-		return i.(int), ok
+	if e, ok := list.Get(index); ok {
+		return Int(e), ok
 	}
 	return 0, false
 }
 
+// GetF retorna o elemento referente ao indice informado convertido em float e true caso exista elemento no índice.
 func (list *List) GetF(index int) (float64, bool) {
-	if i, ok := list.Get(index); ok {
-		return i.(float64), ok
+	if e, ok := list.Get(index); ok {
+		return Float(e), ok
 	}
 	return 0.0, false
 }
 
+// GetS retorna o elemento referente ao indice informado convertido em string e true caso exista elemento no índice.
 func (list *List) GetS(index int) (string, bool) {
-	if i, ok := list.Get(index); ok {
-		return i.(string), ok
+	if e, ok := list.Get(index); ok {
+		return String(e), ok
 	}
 	return "", false
 }
