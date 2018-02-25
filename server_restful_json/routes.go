@@ -1,6 +1,8 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+)
 
 type Route struct {
 	Name        string
@@ -11,9 +13,11 @@ type Route struct {
 
 type Routes []Route
 
-// rotas: localhost:8080            -> indice
-//        localhost:8080/persons    -> lista pessoas
-//        localhost:8080/persons/1  -> pessoa com id 1
+// rotas:
+// [GET]  localhost:8080           handlers.Index        -> indice(welcome)
+// [GET]  localhost:8080/persons   handlers.PersonIndex  -> lista pessoas em array de jsons
+// [GET]  localhost:8080/persons/1 handlers.PersonShow   -> pessoa com id 1 em json
+// [POST] localhost:8080/persons   handlers.PersonCreate -> cadastro de pessoa via json
 
 var routes = Routes{
 	Route{
@@ -33,5 +37,11 @@ var routes = Routes{
 		"GET",
 		"/persons/{personId}",
 		PersonShow,
+	},
+	Route{
+		"PersonCreate",
+		"POST",
+		"/persons",
+		PersonCreate,
 	},
 }

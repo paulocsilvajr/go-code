@@ -9,6 +9,7 @@ import (
 const PORT = ":8080"
 
 func main() {
+	// router.newRouter
 	router := NewRouter()
 
 	fmt.Printf("Server: http://localhost%s\n\n", PORT)
