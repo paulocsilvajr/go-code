@@ -30,8 +30,7 @@ $ ./test.sh       # script de teste
 ```
 list: Pacote que implementa lista aos moldes do tipo list da linguagem Python.
 list_test.go: Arquivo do teste unitário do pacote list.
-server_restful_json: Teste de servidor REST JSON baseado em 
-https://thenewstack.io/make-a-restful-json-api-go/
+server_restful_json: Teste de servidor REST JSON baseado em https://thenewstack.io/make-a-restful-json-api-go/
 ```
 
 ### Licença
