@@ -1,11 +1,15 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gorilla/mux"
+
+	"go-code/server_restful_json/person"
 )
 
 // rotas: localhost:8080            -> indice
@@ -27,7 +31,12 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func PersonIndex(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "<h1>Pessoa index</h1>")
+	persons := person.Persons{
+		person.Person{Name: "Paulo C", Active: true, Create_at: time.Now()},
+		person.Person{Name: "José da Silva"},
+	}
+
+	json.NewEncoder(w).Encode(persons)
 }
 
 func PersonShow(w http.ResponseWriter, r *http.Request) {
