@@ -78,3 +78,22 @@ func PersonCreate(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+func PersonDestroy(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	personId := vars["personId"]
+
+	id, err := strconv.Atoi(personId)
+	if err != nil {
+		panic(err)
+	}
+
+	err = person.DaoDestroyPerson(id)
+
+	if err != nil {
+		panic(err)
+	} else {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
+	}
+}
