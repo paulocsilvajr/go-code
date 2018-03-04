@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Testes de pacotes")
+	fmt.Println("Exemplo de pacote list")
 
 	l := list.MakeList()
 	l.Extend(list.SliceElements{1, 1, 2, 3, 5, 8, 13})
