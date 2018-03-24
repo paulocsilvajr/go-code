@@ -1,0 +1,210 @@
+p {
+    margin: 0;
+}
+
+.texto-centralizado {
+    text-align: center;
+}
+
+.texto-direita {
+    text-align: right;
+}
+
+.texto-esquerda {
+    text-align: left;
+}
+
+.texto-justificado {
+    text-align: justify;
+}
+
+.margem-interna-20-50 {
+    padding-top : 20px;
+    padding-right : 50px;
+    padding-bottom : 20px;
+    padding-left : 50px;
+
+    /* forma resumida, segue a sequência top, right, bottom e left(sentido horário) */
+    /* padding: 20px 50px 20px 50px */
+
+    /* top e bottom, right e left*/
+    /* padding: 20px 50px */
+
+    /* todos */
+    /* padding: 50px */
+}
+
+.margem-interna-10 {
+    padding: 10px;
+}
+
+.sucesso {
+    color: ForestGreen;
+}
+
+.primario {
+    color: RoyalBlue;
+}
+
+.perigo {
+    color: FireBrick;
+}
+
+.atencao {
+    color: Gold;
+}
+
+.sucesso-fundo {
+    background-color: PaleGreen; 
+}
+
+.primario-fundo {
+    background-color: LightSteelBlue;
+}
+
+.perigo-fundo {
+    background-color: PeachPuff;
+}
+
+.atencao-fundo {
+    background-color: LightYellow;
+}
+
+.conteiner {
+    padding: 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margem-interna-acima-0 {
+    padding-top: 0;
+}
+
+.margem-interna-direita-0 {
+    padding-right: 0;
+}
+
+.margem-interna-abaixo-0 {
+    padding-bottom: 0;
+}
+
+.margem-interna-esquerda-0 {
+    padding-left: 0;
+}
+
+.margem-externa-acima-60 {
+    margin-top: 60px;
+}
+
+/* class="conteiner mi5" */
+.conteiner.mi5 {
+    padding: 5px;
+}
+
+.conteiner.mi10 {
+    padding: 10px;
+}
+
+.conteiner.mi15 {
+    padding: 15px;
+}
+
+.linha::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* <div class="linha"> */
+/*   <div class="coluna-1"> */
+/*     <!-- conteúdo --> */
+/*   </div> */
+/* </div> */
+.linha .coluna-1 {
+    float: left;
+    width: 8.33%;
+}
+
+.linha .coluna-2 {
+    float: left;
+    width: 16.66%;
+}
+
+.linha .coluna-3 {
+    float: left;
+    width: 25%;
+}
+
+.linha .coluna-4 {
+    float: left;
+    width: 33.33%;
+}
+
+.linha .coluna-6 {
+    float: left;
+    width: 50%;
+}
+
+.linha .coluna-12 {
+    float: left;
+    width: 100%;
+}
+
+.caixa {
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px silver;
+    background-color: Lavender;
+    padding: 10px; 
+    margin: 5px;
+    height: 150px;
+    overflow: hidden;
+}
+
+ul.barra-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+
+    list-style-type: none;
+    margin: 0;
+    background-color: gray;
+}
+
+li.item-barra {
+    display: inline;
+    margin: auto;
+}
+
+/* .barra { */
+/*     position: fixed; */
+/*     top: 0; */
+/*     left: 0; */
+/*     width: 100%; */
+/* } */
+
+/* .barra-superior { */
+/*     height: 60px; */
+/*     margin: auto; */
+/*     background-color: gray; */
+/* } */
+
+/* .barra-item { */
+/*     margin: 10px; */
+/*     font-size: 30px; */
+/* } */
+
+/* .barra-item.esquerda { */
+/*     float: left; */
+/* } */
+
+/* .barra-item.direita { */
+/*     float: right; */
+/* } */
+
+/* .barra-item.centro { */
+/*     margin: auto; */
+/* } */
