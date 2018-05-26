@@ -1,23 +1,25 @@
 package config
 
 import (
-	"encoding/gob"
+	"encoding/json"
 	"os"
 )
 
 // https://play.golang.org/p/6dX5SMdVtr
+
+const arquivo = "config/config.json"
 
 func criarConfigPadrao() {
 	configuracoes := make(map[string]string)
 	configuracoes["porta"] = "8080"
 	configuracoes["host"] = "localhost"
 
-	encodeFile, err := os.Create("config/config.gob")
+	encodeFile, err := os.Create(arquivo)
 	if err != nil {
 		panic(err)
 	}
 
-	encoder := gob.NewEncoder(encodeFile)
+	encoder := json.NewEncoder(encodeFile)
 
 	if err := encoder.Encode(configuracoes); err != nil {
 		panic(err)
@@ -26,18 +28,18 @@ func criarConfigPadrao() {
 }
 
 func AbrirConfiguracoes() map[string]string {
-	decodeFile, err := os.Open("config/config.gob")
+	decodeFile, err := os.Open(arquivo)
 	if err != nil {
 		criarConfigPadrao()
 
-		decodeFile, err = os.Open("config/config.gob")
+		decodeFile, err = os.Open(arquivo)
 		if err != nil {
 			panic(err)
 		}
 	}
 	defer decodeFile.Close()
 
-	decoder := gob.NewDecoder(decodeFile)
+	decoder := json.NewDecoder(decodeFile)
 
 	configuracoes := make(map[string]string)
 
