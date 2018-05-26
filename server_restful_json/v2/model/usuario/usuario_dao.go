@@ -52,8 +52,9 @@ func DaoRemoveUsuario(id int) error {
 	return fmt.Errorf("Não foi encontrado usuário com id[%d]", id)
 }
 
-func DaoAlteraUsuario(usuario Usuario) error {
+func DaoAlteraUsuario(usuario Usuario) Usuario {
 	for _, usuarioAtual := range ListaUsuarios {
+		fmt.Println(usuarioAtual)
 		if usuario.Id == usuarioAtual.Id {
 			usuarioAtual.Nome = usuario.Nome
 			usuarioAtual.Email = usuario.Email
@@ -61,11 +62,11 @@ func DaoAlteraUsuario(usuario Usuario) error {
 			usuarioAtual.Ativo = usuario.Ativo
 			usuarioAtual.DataCriacao = usuario.DataCriacao
 
-			return nil
+			return *usuarioAtual
 		}
 	}
 
-	return fmt.Errorf("Usuário com id %d não existe", usuario.Id)
+	return Usuario{}
 }
 
 func DaoProcuraUsuario(id int) (*Usuario, error) {

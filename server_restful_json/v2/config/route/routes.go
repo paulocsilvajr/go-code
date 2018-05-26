@@ -54,7 +54,7 @@ var routes = Routes{
 	Route{
 		"UsuarioAlter",
 		"PUT",
-		"/usuarios/{usuarioId}",
+		"/usuarios",
 		controller.UsuarioAlter,
 	},
 }
