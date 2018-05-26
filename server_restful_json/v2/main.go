@@ -5,17 +5,22 @@ import (
 	"log"
 	"net/http"
 
+	"go-code/server_restful_json/v2/config"
 	"go-code/server_restful_json/v2/config/route"
 )
 
-const PORT = ":8080"
+//const Porta = ":8080"
 
 func main() {
+	configuracoes := config.AbrirConfiguracoes()
+	porta := fmt.Sprintf(":%s", configuracoes["porta"])
+	host := configuracoes["host"]
+
 	router := route.NewRouter()
 
-	fmt.Printf("Server: http://localhost%s\n\n", PORT)
+	fmt.Printf("Servidor: http://%s%s\n\n", host, porta)
 
-	log.Fatal(http.ListenAndServe(PORT, router))
+	log.Fatal(http.ListenAndServe(porta, router))
 
 }
 
