@@ -7,11 +7,14 @@ import (
 
 	"go-code/server_restful_json/v2/config"
 	"go-code/server_restful_json/v2/config/route"
+	"go-code/server_restful_json/v2/helper"
 )
 
 //const Porta = ":8080"
 
 func main() {
+	helper.CriarDiretorioSeNaoExistir("config")
+
 	configuracoes := config.AbrirConfiguracoes()
 	porta := fmt.Sprintf(":%s", configuracoes["porta"])
 	host := configuracoes["host"]

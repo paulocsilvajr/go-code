@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"go-code/server_restful_json/v2/helper"
 )
 
 func Logger(inner http.Handler, name string) http.Handler {
@@ -15,8 +17,10 @@ func Logger(inner http.Handler, name string) http.Handler {
 
 		inner.ServeHTTP(w, r)
 
+		helper.CriarDiretorioSeNaoExistir("logs")
+
 		// log em arquivo
-		nomeArquivo := fmt.Sprintf("logger/logs/%04d%02d%02d.log", start.Year(), start.Month(), start.Day())
+		nomeArquivo := fmt.Sprintf("logs/%04d%02d%02d.log", start.Year(), start.Month(), start.Day())
 		arquivo, err := os.OpenFile(nomeArquivo, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 		if err != nil {
 			log.Fatalf("Erro ao abrir arquivo de log[%s]", err)
