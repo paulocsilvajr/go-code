@@ -1,0 +1,11 @@
+2018/05/26 15:47:47 GET	/usuarios	UsuarioIndex	244.835µs
+2018/05/26 15:48:11 GET	/usuarios	UsuarioIndex	51.644µs
+2018/05/26 15:48:13 GET	/usuarios	UsuarioIndex	85.186µs
+2018/05/26 15:52:35 GET	/usuarios	UsuarioIndex	229.492µs
+2018/05/26 15:52:37 GET	/usuarios	UsuarioIndex	55.808µs
+2018/05/26 15:52:38 GET	/usuarios	UsuarioIndex	124.006µs
+2018/05/26 15:57:55 GET	/usuarios	UsuarioIndex	180.767µs
+2018/05/26 15:57:57 GET	/usuarios	UsuarioIndex	70.245µs
+2018/05/26 16:03:16 GET	/usuarios	UsuarioIndex	70.851µs
+2018/05/26 16:10:54 GET	/usuarios	UsuarioIndex	79.725µs
+2018/05/26 16:14:17 GET	/usuarios	UsuarioIndex	60.968µs
