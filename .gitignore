@@ -14,4 +14,4 @@
 
 # Personalizado
 *.log
-v2/bin
+server_restful_json/v2/bin
