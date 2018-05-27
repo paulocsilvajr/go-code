@@ -15,3 +15,4 @@
 # Personalizado
 *.log
 server_restful_json/v2/bin
+*.db

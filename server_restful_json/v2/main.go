@@ -8,11 +8,14 @@ import (
 	"go-code/server_restful_json/v2/config"
 	"go-code/server_restful_json/v2/config/route"
 	"go-code/server_restful_json/v2/helper"
+	"go-code/server_restful_json/v2/model/usuario"
 )
 
 //const Porta = ":8080"
 
 func main() {
+	db := usuario.DaoCriaBanco()
+
 	helper.CriarDiretorioSeNaoExistir("config")
 
 	configuracoes := config.AbrirConfiguracoes()
@@ -25,6 +28,7 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(porta, router))
 
+	db.Close()
 }
 
 // func main() {
