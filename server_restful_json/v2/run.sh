@@ -9,5 +9,5 @@ elif [ "$1" == "-t" ]; then
     go run *.go
 else
     ./build.sh
-    ./v2
+    ./server_rest
 fi

@@ -16,3 +16,5 @@
 *.log
 server_restful_json/v2/bin
 *.db
+# executável gerado por build.sh
+server_rest
