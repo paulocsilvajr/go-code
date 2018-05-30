@@ -8,3 +8,4 @@ install(){
 echo -e "Instalando dependências\n"
 
 install github.com/gorilla/mux
+install github.com/mattn/go-sqlite3
