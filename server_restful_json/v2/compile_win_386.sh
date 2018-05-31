@@ -1,4 +1,11 @@
 #!/bin/bash
 
-mkdir bin/win386
-env GOOS=windows GOARCH=386 go build -o bin/win386/server_rest.exe
+PASTA=bin/win386
+ARQUIVO=$PASTA/server_rest.exe
+
+export GOOS=windows
+export GOARCH=386
+export CGO_ENABLED=0
+
+mkdir $PASTA 2> /dev/null
+go build -o $ARQUIVO -a -ldflags '-extldflags "-static"' && echo "Gerado executável: $PASTA/$(ls $PASTA)"
