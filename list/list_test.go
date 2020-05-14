@@ -1,26 +1,25 @@
-package main
+package list
 
 import (
 	"fmt"
-	"go-code/list"
 	"reflect"
 	"sort"
 	"testing"
 )
 
-var l1 list.List
-var l2 list.List
+var l1 List
+var l2 List
 
 func TestMakeList(t *testing.T) {
-	l := list.MakeList()
+	l := MakeList()
 
 	tipo := fmt.Sprintf("%v", reflect.TypeOf(l))
-	if tipo != "list.List" || !reflect.DeepEqual(l, list.List{}) {
-		t.Errorf("MakeList não está retornando uma list.List, retorna uma %v",
+	if tipo != "list.List" || !reflect.DeepEqual(l, List{}) {
+		t.Errorf("MakeList não está retornando uma List, retorna uma %v",
 			tipo)
 	}
 
-	fmt.Println("list.MakeList")
+	fmt.Println("MakeList")
 }
 
 func TestString(t *testing.T) {
@@ -38,7 +37,7 @@ func TestString(t *testing.T) {
 		t.Errorf("String não está retornando o formato padrão estabelecido quando possui vários elementos.")
 	}
 
-	fmt.Println("list.String")
+	fmt.Println("String")
 }
 
 func TestLength(t *testing.T) {
@@ -47,7 +46,7 @@ func TestLength(t *testing.T) {
 		t.Errorf("Length não está retornando o valor correto para a quantidade de elementos. %d != %d", l1.Length(), q)
 	}
 
-	fmt.Println("list.Length")
+	fmt.Println("Length")
 }
 
 func TestElements(t *testing.T) {
@@ -58,12 +57,12 @@ func TestElements(t *testing.T) {
 	}
 
 	es := l1.Elements[1:3]
-	ns := list.SliceElements{2, 3}
+	ns := SliceElements{2, 3}
 	if !reflect.DeepEqual(es, ns) {
 		t.Errorf("Elements[1:2] não está retornando o valor correto, %v[%s] != %v[%s].", es, reflect.TypeOf(es), ns, reflect.TypeOf(ns))
 	}
 
-	fmt.Println("list.Elements")
+	fmt.Println("Elements")
 }
 
 func TestGetGets(t *testing.T) {
@@ -74,7 +73,7 @@ func TestGetGets(t *testing.T) {
 	}
 
 	es, oks := l1.Gets(1, 3)
-	ns := list.SliceElements{2, 3}
+	ns := SliceElements{2, 3}
 	if !reflect.DeepEqual(es, ns) {
 		t.Errorf("Gets(1, 2) não está retornando o valor correto, %v[%t][%s] != %v[%s].",
 			es, oks, reflect.TypeOf(es), ns, reflect.TypeOf(ns))
@@ -91,7 +90,7 @@ func TestGetGets(t *testing.T) {
 	}
 
 	es, oks = l1.Gets(0, -1)
-	ns = list.SliceElements{1, 2}
+	ns = SliceElements{1, 2}
 	if !reflect.DeepEqual(es, ns) {
 		t.Errorf("Gets(0, -1) não está retornando o valor correto, %v[%t][%s] != %v[%s].",
 			es, oks, reflect.TypeOf(es), ns, reflect.TypeOf(ns))
@@ -110,7 +109,7 @@ func TestGetGets(t *testing.T) {
 		t.Errorf("Em es, oks := Gets(0, 4) a variável ok está retornando verdadeiro[ok=%t] para um índice inválido", ok)
 	}
 
-	fmt.Println("list.Get/Gets")
+	fmt.Println("Get/Gets")
 }
 
 func TestSet(t *testing.T) {
@@ -126,12 +125,12 @@ func TestSet(t *testing.T) {
 		t.Errorf("Set(-1, 3) está retornando falso[ok=%t] para um índice válido(inverso)", ok)
 	}
 
-	fmt.Println("list.Set")
+	fmt.Println("Set")
 }
 
 func TestAppendAppends(t *testing.T) {
 	l1.Append(4)
-	l := list.List{list.SliceElements{1, 2, 3, 4}}
+	l := List{SliceElements{1, 2, 3, 4}}
 	if !reflect.DeepEqual(l1, l) {
 		t.Errorf("Append(4) está adicionando elementos errado")
 	}
@@ -142,13 +141,13 @@ func TestAppendAppends(t *testing.T) {
 		t.Errorf("Appends(5, 6) está adicionando elementos errado")
 	}
 
-	l1.Appends(list.SliceElements{7, 8}...)
-	l.Elements = append(l.Elements, list.SliceElements{7, 8}...)
+	l1.Appends(SliceElements{7, 8}...)
+	l.Elements = append(l.Elements, SliceElements{7, 8}...)
 	if !reflect.DeepEqual(l1, l) {
-		t.Errorf("l1.Appends(list.SliceElements{7, 8}...) está adicionando elementos errado")
+		t.Errorf("l1.Appends(SliceElements{7, 8}...) está adicionando elementos errado")
 	}
 
-	fmt.Println("list.Append/Appends")
+	fmt.Println("Append/Appends")
 }
 
 func TestGetType(t *testing.T) {
@@ -164,18 +163,18 @@ func TestGetType(t *testing.T) {
 		t.Errorf("GetType(10) está retornando uma string com um tipo para uma posição inválida")
 	}
 
-	fmt.Println("list.GetType")
+	fmt.Println("GetType")
 }
 
 func TestExtend(t *testing.T) {
-	l1.Extend(list.SliceElements{9, 10})
-	l := list.List{list.SliceElements{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}
+	l1.Extend(SliceElements{9, 10})
+	l := List{SliceElements{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}}
 
 	if !reflect.DeepEqual(l1, l) {
-		t.Errorf("Extend(list.SliceElements{9, 10}) está adicionando SliceElements errado")
+		t.Errorf("Extend(SliceElements{9, 10}) está adicionando SliceElements errado")
 	}
 
-	fmt.Println("list.Extend")
+	fmt.Println("Extend")
 }
 
 func TestCopy(t *testing.T) {
@@ -185,17 +184,17 @@ func TestCopy(t *testing.T) {
 		t.Errorf("Copy() está retornado uma cópia inválida, %v != %v", l1, l2)
 	}
 
-	fmt.Println("list.Copy")
+	fmt.Println("Copy")
 }
 
 func TestClear(t *testing.T) {
 	l2.Clear()
 
-	if !(l2.Length() > 0) && !reflect.DeepEqual(l2, list.List{}) {
+	if !(l2.Length() > 0) && !reflect.DeepEqual(l2, List{}) {
 		t.Errorf("Clear() está limpando a List incorretamente")
 	}
 
-	fmt.Println("list.Clear")
+	fmt.Println("Clear")
 }
 
 func TestCount(t *testing.T) {
@@ -208,7 +207,7 @@ func TestCount(t *testing.T) {
 		t.Errorf("Count(10) está retornando quantidade para elemento inexistente em List")
 	}
 
-	fmt.Println("list.Count")
+	fmt.Println("Count")
 }
 
 func TestIndex(t *testing.T) {
@@ -221,11 +220,11 @@ func TestIndex(t *testing.T) {
 		t.Errorf("Index(10) está retornando uma posição para um elemento inexistente")
 	}
 
-	fmt.Println("list.Index")
+	fmt.Println("Index")
 }
 
 func TestInsert(t *testing.T) {
-	l := list.List{list.SliceElements{10}}
+	l := List{SliceElements{10}}
 	ok := l2.Insert(0, 10)
 	if !ok && reflect.DeepEqual(l2, l) {
 		t.Errorf("Insert(0, 10) não esta inserindo no indice 0 o elemento 10")
@@ -235,7 +234,7 @@ func TestInsert(t *testing.T) {
 		t.Errorf("Insert(5, 20) está inserindo o elemento 20 em uma posição inexistente")
 	}
 
-	fmt.Println("list.Insert")
+	fmt.Println("Insert")
 }
 
 func TestPop(t *testing.T) {
@@ -258,7 +257,7 @@ func TestPop(t *testing.T) {
 		t.Errorf("Pop() está removendo elementos de List vazia")
 	}
 
-	fmt.Println("list.Pop")
+	fmt.Println("Pop")
 }
 
 func TestRemove(t *testing.T) {
@@ -270,7 +269,7 @@ func TestRemove(t *testing.T) {
 		t.Errorf("Remove(10) está removendo elemento inexistente da List")
 	}
 
-	fmt.Println("list.Remove")
+	fmt.Println("Remove")
 }
 
 // tipo, struct e métodos para ordenação de Pessoa
@@ -278,13 +277,13 @@ type Pessoa struct {
 	nome  string
 	idade int
 }
-type sorterIdade list.SliceElements
+type sorterIdade SliceElements
 
 func (n sorterIdade) Len() int           { return len(n) }
 func (n sorterIdade) Swap(i, j int)      { n[i], n[j] = n[j], n[i] }
 func (n sorterIdade) Less(i, j int) bool { return n[i].(Pessoa).idade < n[j].(Pessoa).idade }
 
-func sortFunction(list *list.List) {
+func sortFunction(list *List) {
 	sort.Sort(sorterIdade(list.Elements))
 }
 
@@ -294,15 +293,15 @@ func TestSortReverse(t *testing.T) {
 		t.Errorf("Sort() não pode ordenar a List de inteiros")
 	}
 
-	var l3 list.List
-	l3.Appends(list.SliceElements{"c", "a", "b", "f", "e", "d"}...)
+	var l3 List
+	l3.Appends(SliceElements{"c", "a", "b", "f", "e", "d"}...)
 	er = l3.Sort()
 	if er != nil {
 		t.Errorf("Sort() não pode ordenar a List de strings")
 	}
 
-	var l4 list.List
-	l4.Appends(list.SliceElements{
+	var l4 List
+	l4.Appends(SliceElements{
 		Pessoa{"Paulo", 30},
 		Pessoa{"João", 20},
 		Pessoa{"André", 25}})
@@ -311,8 +310,8 @@ func TestSortReverse(t *testing.T) {
 		t.Errorf("Sort() não pode ordenar a List de strings")
 	}
 
-	var l5 list.List
-	l5.Appends(list.SliceElements{"c", 2, 3.14}...)
+	var l5 List
+	l5.Appends(SliceElements{"c", 2, 3.14}...)
 	er = l5.Sort()
 	if er == nil {
 		t.Errorf("Sort() em List heterogênea deve retornar erro")
@@ -323,5 +322,5 @@ func TestSortReverse(t *testing.T) {
 		t.Errorf("Reverse() não pode ordenar em ordem inversa a List de inteiros")
 	}
 
-	fmt.Println("list.Sort/Reverse")
+	fmt.Println("Sort/Reverse")
 }

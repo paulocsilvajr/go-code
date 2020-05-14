@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-code/list"
+
+	"github.com/paulocsilvajr/go-code/list"
 )
 
 func main() {
