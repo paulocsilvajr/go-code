@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"go-code/server_restful_json/v2/helper"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/helper"
 )
 
 func Logger(inner http.Handler, name string) http.Handler {

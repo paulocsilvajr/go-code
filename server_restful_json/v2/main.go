@@ -5,10 +5,10 @@ import (
 	"log"
 	"net/http"
 
-	"go-code/server_restful_json/v2/config"
-	"go-code/server_restful_json/v2/config/route"
-	"go-code/server_restful_json/v2/helper"
-	"go-code/server_restful_json/v2/model/usuario"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/config"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/config/route"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/helper"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/model/usuario"
 )
 
 //const Porta = ":8080"

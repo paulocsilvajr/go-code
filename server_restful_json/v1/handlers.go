@@ -10,7 +10,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"go-code/server_restful_json/v1/person"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v1/person"
 )
 
 // funções acessadas pelas rotas(routes.go)

@@ -1,8 +1,9 @@
 package route
 
 import (
-	"go-code/server_restful_json/v2/logger"
 	"net/http"
+
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/logger"
 
 	"github.com/gorilla/mux"
 )
