@@ -15,13 +15,13 @@ Após o download, este repositório estará disponível em ~/go/src/github.com/p
 
 Para acessar a docstring, execute:
 ```
-$ godoc cmd/github.com/paulocsilvajr/go-code       # exibe pacotes
-$ godoc cmd/github.com/paulocsilvajr/go-code/list  # pacote list
+$ go doc github.com/paulocsilvajr/go-code/util  # lista funções de pacote util
+$ go doc github.com/paulocsilvajr/go-code/util Dir # docstring de função Dir
 ```
 
 Execute o teste unitário pelo comando
 ```
-$ go test -cover  # na pasta do projeto ou
+$ go test -cover github.com/paulocsilvajr/go-code/util  # teste para o pacote util
 $ ./test.sh       # script de teste
 ```
 

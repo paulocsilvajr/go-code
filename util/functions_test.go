@@ -19,6 +19,10 @@ func (p Pessoa) levitar() string {
 	return "Levitando..."
 }
 
+func (p Pessoa) GetIdade() int {
+	return p.idade
+}
+
 func TestType(t *testing.T) {
 	inteiro := 42
 	tipo := Type(inteiro)
@@ -36,21 +40,31 @@ func TestType(t *testing.T) {
 func TestDir(t *testing.T) {
 	p := Pessoa{"José", 30}
 	metodos := DirM(p)
-	if len(metodos) > 2 {
-		t.Error("DirM retornou um slice com mais de 2 elemento. Struct Pessoa tem somente 2 método Públicos", metodos)
+	if len(metodos) > 3 {
+		t.Error("DirM retornou um slice com mais de 3 elemento. Struct Pessoa tem somente 3 método Públicos", metodos)
 	}
 
-	if metodos[0] != "Andar" {
-		t.Error("DirM não retornou o método declarado na struct Pessoa chamado Andar")
-	}
-
-	if metodos[1] != "Correr" {
-		t.Error("DirM não retornou o método declarado na struct Pessoa chamado Correr")
+	for i := 0; i < len(metodos); i++ {
+		metodo := metodos[i]
+		switch metodo {
+		case "Andar", "Correr", "GetIdade":
+			continue
+		default:
+			t.Errorf("DirM não retornou o método declarado na struct Pessoa chamado %s", metodo)
+		}
 	}
 
 	atributos := DirF(p)
 	if len(atributos) > 2 {
 		t.Error("DirF retornou um slice com mais de 2 elementos. Struct Pessoa tem somente 2 atributos", atributos)
+	}
+
+	if atributos[0] != "Nome" {
+		t.Error("DirF não retornou o atributo declarado na struct Pessoa chamado Nome")
+	}
+
+	if atributos[1] != "idade" {
+		t.Error("DirF não retornou o atributo declarado na struct Pessoa chamado idade")
 	}
 
 	metodos = DirM(42)

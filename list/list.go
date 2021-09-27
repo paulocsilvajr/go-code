@@ -1,3 +1,4 @@
+// Package list implementa uma lista nos moldes de list em python usando slice.
 package list
 
 import (
@@ -41,7 +42,7 @@ func MakeList() List {
 	return List{}
 }
 
-// String sobrescreve interface String padrão para formatar impressao de List para:
+// String sobrescreve interface String padrão para formatar impressão de List para:
 // [0, 1, 2, ...]
 func (list List) String() string {
 	temp := make([]string, list.Length())

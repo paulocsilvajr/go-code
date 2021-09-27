@@ -1,8 +1,9 @@
 package route
 
 import (
-	"go-code/server_restful_json/v2/controller"
 	"net/http"
+
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/controller"
 )
 
 type Route struct {

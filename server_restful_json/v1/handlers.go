@@ -10,7 +10,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"go-code/server_restful_json/v1/person"
+	"github.com/paulocsilvajr/go-code/server_restful_json/v1/person"
 )
 
 // funções acessadas pelas rotas(routes.go)
@@ -76,5 +76,24 @@ func PersonCreate(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(t); err != nil {
 		panic(err)
+	}
+}
+
+func PersonDestroy(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	personId := vars["personId"]
+
+	id, err := strconv.Atoi(personId)
+	if err != nil {
+		panic(err)
+	}
+
+	err = person.DaoDestroyPerson(id)
+
+	if err != nil {
+		panic(err)
+	} else {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
 	}
 }

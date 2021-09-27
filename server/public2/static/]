@@ -1,0 +1,8 @@
+body {
+    /* Margem interna reservada a barra superior */
+    padding-top: 5rem;
+}
+
+section {
+    padding-top: 5rem;
+}

@@ -3,11 +3,12 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"go-code/server_restful_json/v2/model/usuario"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"strconv"
+
+	"github.com/paulocsilvajr/go-code/server_restful_json/v2/model/usuario"
 
 	"github.com/gorilla/mux"
 )
