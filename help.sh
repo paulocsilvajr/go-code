@@ -1,1 +1,1 @@
-godoc cmd/go-code/list
+go doc github.com/paulocsilvajr/go-code/list
